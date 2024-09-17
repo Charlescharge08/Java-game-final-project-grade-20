@@ -32,6 +32,20 @@ public class GamePanel extends JPanel implements Runnable {
     @Override
     public void run() {
         // TODO Auto-generated method stub
-        
+        while(gameThread != null){
+
+            System.out.println("Game running");
+
+            // 1 Update: update information such as player position, enemy position, etc.
+
+            // 2 Draw: draw the screen with the updated information.
+        }
+    }
+
+    public void update(){
+
+    }
+    public void paintComponent(){
+
     }
 }
