@@ -13,10 +13,12 @@ public class Main {
         // Add the game panel settings/prefrinces to the window
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
-        
+
         window.pack();
 
         window.setLocationRelativeTo(null);
         window.setVisible(true);
+
+        gamePanel.startGameThread();
     }
 }
