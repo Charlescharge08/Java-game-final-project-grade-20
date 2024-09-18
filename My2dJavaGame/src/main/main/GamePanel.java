@@ -23,6 +23,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     keyHandler keyH = new keyHandler();
     Thread gameThread;
+    
 
     // sets player position
 
