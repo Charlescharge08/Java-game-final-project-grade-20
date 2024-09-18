@@ -40,20 +40,20 @@ public class keyHandler implements KeyListener {
 
         if (code == KeyEvent.VK_W) {
             upPressed = false;
-            System.out.println("upPressed");
+            //System.out.println("upPressed");
         }
         if (code == KeyEvent.VK_S) {
             downPressed = false;
-            System.out.println("downPressed");
+            //System.out.println("downPressed");
         }
         if (code == KeyEvent.VK_A) {
             leftPressed = false;
-            System.out.println("leftPressed");
+            //System.out.println("leftPressed");
         }
 
         if (code == KeyEvent.VK_D) {
             rightPressed = false;
-            System.out.println("rightPressed");
+            //System.out.println("rightPressed");
         }
     }
 

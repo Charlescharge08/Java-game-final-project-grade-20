@@ -1,5 +1,6 @@
 package main;
 
+import Entiy.Player;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -11,7 +12,7 @@ public class GamePanel extends JPanel implements Runnable {
     final int originalTileSize = 16; // 16x16 pixels
     final int scale = 3; // scale factor or it will be too small
 
-    final int tileSize = originalTileSize * scale; // 48x48 pixels
+    public final int tileSize = originalTileSize * scale; // 48x48 pixels
 
     final int maxScreenCol = 16; // 16 tiles tall
     final int maxScreenRow = 12; // 12 tiles wide
@@ -23,7 +24,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     keyHandler keyH = new keyHandler();
     Thread gameThread;
-    
+    Player player = new Player(this, keyH);
 
     // sets player position
 
@@ -44,39 +45,40 @@ public class GamePanel extends JPanel implements Runnable {
         gameThread.start();
     }
 
-//    @Override
-//   public void run() {
+    // @Override
+    // public void run() {
 
-//       double drawInterval = 1000000000 / FPS;
-//       double nextDrawTime = System.nanoTime() + drawInterval;
+    // double drawInterval = 1000000000 / FPS;
+    // double nextDrawTime = System.nanoTime() + drawInterval;
 
-//      while (gameThread != null) {
+    // while (gameThread != null) {
 
-            // 1 Update: update information such as player position, enemy position, etc.
-//           update();
-            // 2 Draw: draw the screen with the updated information.
-//           repaint();
+    // 1 Update: update information such as player position, enemy position, etc.
+    // update();
+    // 2 Draw: draw the screen with the updated information.
+    // repaint();
 
-//           try {
-//               double remainingTime = nextDrawTime - System.nanoTime();
-//              remainingTime = remainingTime / 1000000; // convert to milliseconds for the sleep method
+    // try {
+    // double remainingTime = nextDrawTime - System.nanoTime();
+    // remainingTime = remainingTime / 1000000; // convert to milliseconds for the
+    // sleep method
 
-//              if (remainingTime < 0) {
-//                   remainingTime = 0;
-//               }
+    // if (remainingTime < 0) {
+    // remainingTime = 0;
+    // }
 
-//                Thread.sleep((long) remainingTime);
-//                nextDrawTime += drawInterval;
+    // Thread.sleep((long) remainingTime);
+    // nextDrawTime += drawInterval;
 
-//            } catch (InterruptedException e) {
+    // } catch (InterruptedException e) {
 
-//                e.printStackTrace();
-//            }
-//        }
-//    }
+    // e.printStackTrace();
+    // }
+    // }
+    // }
 
-    public void run(){
-        
+    public void run() {
+
         double drawInterval = 1000000000 / FPS;
         double delta = 0;
         long lastTime = System.nanoTime();
@@ -90,33 +92,24 @@ public class GamePanel extends JPanel implements Runnable {
             timer += (currentTime - lastTime);
             lastTime = currentTime;
 
-            if(delta >= 1){
+            if (delta >= 1) {
                 update();
                 repaint();
                 delta--;
                 drawCount++;
             }
 
-            if(timer >= 1000000000){
+            if (timer >= 1000000000) {
                 System.out.println("FPS: " + drawCount);
                 drawCount = 0;
                 timer = 0;
             }
         }
-        
+
     }
 
     public void update() {
-
-        if (keyH.upPressed) {
-            playerY -= playerSpeed;
-        } else if (keyH.downPressed) {
-            playerY += playerSpeed;
-        } else if (keyH.leftPressed) {
-            playerX -= playerSpeed;
-        } else if (keyH.rightPressed) {
-            playerX += playerSpeed;
-        }
+        player.update();
 
     }
 
@@ -126,8 +119,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D) g;
 
-        g2.setColor(Color.WHITE);
-        g2.fillRect(playerX, playerY, tileSize, tileSize);
+        player.draw(g2);
 
         g2.dispose();
 
