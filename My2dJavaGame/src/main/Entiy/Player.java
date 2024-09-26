@@ -2,7 +2,6 @@ package Entiy;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
 import main.GamePanel;
 import main.keyHandler;
 
@@ -20,14 +19,14 @@ public class Player extends entiy{
     public void getPlayerImage(){
         try {
             
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_up_2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_down_2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_left_2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player/boy_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player/boy_right_2.png"));
+            up1 = loadImage("/player/boy_up_1.png");
+            up2 = loadImage("/player/boy_up_2.png");
+            down1 = loadImage("/player/boy_down_1.png");
+            down2 = loadImage("/player/boy_down_2.png");
+            left1 = loadImage("/player/boy_left_1.png");
+            left2 = loadImage("/player/boy_left_2.png");
+            right1 = loadImage("/player/boy_right_1.png");
+            right2 = loadImage("/player/boy_right_2.png");
 
         } catch (Exception e) {
             // TODO: handle exception
@@ -35,6 +34,11 @@ public class Player extends entiy{
         }
     }
 
+
+    private BufferedImage loadImage(String string) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'loadImage'");
+    }
 
     public void setDefaultValues(){
         x = 100;
