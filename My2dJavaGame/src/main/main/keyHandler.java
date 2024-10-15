@@ -17,7 +17,7 @@ public class keyHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         // TODO Auto-generated method stub
         int code = e.getKeyCode();
-
+        // W, A, S, D
         if (code == KeyEvent.VK_W) {
             upPressed = true;
         }
@@ -31,13 +31,28 @@ public class keyHandler implements KeyListener {
             rightPressed = true;
         }
 
+        // Arrow keys
+        if (code == KeyEvent.VK_UP) {
+            upPressed = true;
+        }
+        if (code == KeyEvent.VK_DOWN) {
+            downPressed = true;
+        }
+        if (code == KeyEvent.VK_LEFT) {
+            leftPressed = true;
+        }
+        if (code == KeyEvent.VK_RIGHT) {
+            rightPressed = true;
+        }
+
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         // TODO Auto-generated method stub
         int code = e.getKeyCode();
-
+        
+        // W, A, S, D
         if (code == KeyEvent.VK_W) {
             upPressed = false;
             System.out.println("upPressed");
@@ -52,6 +67,25 @@ public class keyHandler implements KeyListener {
         }
 
         if (code == KeyEvent.VK_D) {
+            rightPressed = false;
+            System.out.println("rightPressed");
+        }
+
+        // Arrow keys
+        if (code == KeyEvent.VK_UP) {
+            upPressed = false;
+            System.out.println("upPressed");
+        }
+        if (code == KeyEvent.VK_DOWN) {
+            downPressed = false;
+            System.out.println("downPressed");
+        }
+        if (code == KeyEvent.VK_LEFT) {
+            leftPressed = false;
+            System.out.println("leftPressed");
+        }
+
+        if (code == KeyEvent.VK_RIGHT) {
             rightPressed = false;
             System.out.println("rightPressed");
         }
